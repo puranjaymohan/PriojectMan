@@ -1,0 +1,86 @@
+{%extends "mainlayout.html"%}
+
+{%block body%}
+<style>td,th{
+text-align:center;
+}
+.page-link{
+color:white;
+background-color:black
+}
+.aactive{
+color:black;
+background-color:white
+}
+
+</style>
+<div class="container">
+
+
+
+  
+
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Project Name</th>
+        <th>Creation Date and Time</th>
+        <th>Technology</th>
+		<th>progress</th>
+		<th>Completed</th>
+		<th style="text-align:center" colspan="2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+	
+	
+	{% for index in findit %}	
+	{%if index <= lengthof-1%}	
+	<tr>
+        <td>{{result[index]['projectname']}}</td>
+        <td>{{result[index]['date']}}</td>
+        <td>{{result[index]['technology']}}</td>
+		<td>
+		<div class="progress" style="height:18px">
+			<div class="progress-bar bg-dark" style="width:{{result[index]['progress']}}">{{result[index]['progress']}}</div>
+		</div>
+		</td>
+		<td>{%if result[index]['iscomplete'] == 0%}
+			<i class="fa fa-2x fa-times"></i>
+			{%elif result[index]['iscomplete'] == 1 %}
+			<i class="fa fa-2x fa-check"></i>
+			{%endif%}
+		</td>
+		<td style="text-align:center"><a href="/add/u/{{result[index]['id']}}" class="btn btn-sm btn-primary">Update</a></td>
+		<td style="text-align:center"><a href="/delete/{{result[index]['id']}}" class="btn btn-sm btn-danger">Delete</a></td>
+    </tr>
+	
+	{%endif%}
+    {% endfor %}
+	
+	</tbody>
+  </table>
+  </div>
+<div class="row">
+<div class="col">
+</div>
+
+<div class="col">
+<nav class="">
+  <ul class="pagination" id="page">
+    <li class="page-item {%if x==1:%}disabled{%endif%}"><a class="page-link" href="/home/{{x-1}}">Previous</a></li>
+	{%for i in l:%}
+	
+    <li class="page-item {%if i==x :%}disabled{%endif%}"><a class="page-link {%if i==x :%}aactive{%endif%}" href="/home/{{i}}">{{i}}</a></li>
+    
+	{%endfor%}
+	<li class="page-item {%if x==maxi%}disabled{%endif%}"><a class="page-link" href="/home/{{x+1}}">Next</a></li>
+  </ul>
+</nav>
+</div>
+
+<div class="col">
+</div>
+</div>
+{%endblock%}

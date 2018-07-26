@@ -1,0 +1,12 @@
+1. Create a database in Mysql.
+2. Import the user table into it via the provided user.sql file in current folder.
+3. Inside the __init__.py file edit details for your database.
+
+4.Install python 3 or above using specific method for you OS
+5.Install flask with this command, "pip install flask"
+6.Install flask-mysqldb with this command, "pip install flask-mysqldb"
+
+for running the app:
+1. Goto the root of project folder, i.e. folder in which __init__.py file resides.
+2. Open Terminal or CMD in that folder, for windows use shift+right click and then click on open command windows here, to open cmd
+3. Run the app with this command, "python __init__.py" or if you are using linux then use "python3" in place of python.

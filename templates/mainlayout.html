@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>ProjectMan | {{title}}</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" >
+		<link rel="stylesheet" href="{{url_for("static",filename="rangeslider.css")}}" >
+
+	</head>
+	
+	<body>
+
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+      <h5 class="my-0 mr-md-auto font-weight-normal">{{session['loggedin']}}'s Project Manager</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/home">{{session['loggedin']}}'s Projects</a>
+        <a class="p-2 text-dark" href="/add/a/add">Add Project</a>
+        <a class="p-2 text-dark" href="/idea">Idea Pad</a>
+        
+      </nav>
+      <a class="btn btn-outline-primary" href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
+    </div>
+
+		
+	{% with messages = get_flashed_messages(with_categories=true)%}
+  {% if messages %}
+    
+    {% for message in messages %}
+      
+    <div class="alert alert-{{message[0]}} alert-dismissible fade show" role="alert">
+		<strong>{{ message[1] }}</strong> 
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	
+	{% endfor %}
+    
+	
+  {% endif %}
+{% endwith %}		
+			
+	{% block body%}
+	
+	{% endblock %}
+	
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>	
+		<script src="{{url_for('static',filename='rangeslider.min.js')}}" ></script>	
+		<script>
+    // Initialize a new plugin instance for all
+    // e.g. $('input[type="range"]') elements.
+    $('input[type="range"]').rangeslider();
+
+    // Destroy all plugin instances created from the
+    // e.g. $('input[type="range"]') elements.
+    $('input[type="range"]').rangeslider('destroy');
+
+    // Update all rangeslider instances for all
+    // e.g. $('input[type="range"]') elements.
+    // Usefull if you changed some attributes e.g. `min` or `max` etc.
+    $('input[type="range"]').rangeslider('update', true);
+</script>
+	</body>
+</html>	

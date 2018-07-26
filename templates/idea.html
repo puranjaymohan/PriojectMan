@@ -1,0 +1,29 @@
+{%extends "mainlayout.html"%}
+
+{%block body%}
+<style>
+body{
+background-color: #eee;
+}
+</style>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col"></br></div>
+	</div>
+	<div class="row">
+		
+		<div class="col align-middle">	
+		  <form class="form-signin" method="post" action="">
+			<h2 class="form-signin-heading">Use it for taking notes or for ideation</h2>
+			</br>
+			<div class="form-group">
+				
+				<textarea class="form-control" name="text" rows="15" id="comment">{{data}}</textarea>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+		  </form>
+		  
+		  </div>
+	</div>
+</div>
+{%endblock%}

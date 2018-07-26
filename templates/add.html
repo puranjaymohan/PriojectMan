@@ -1,0 +1,43 @@
+{%extends "mainlayout.html"%}
+
+{%block body%}
+<style>
+body{
+background-color: #eee;
+}
+</style>
+<div class="row">
+<div class="col">
+</div>
+<div class="col">
+<div class="container">
+<form action="" method="POST">
+  <div class="form-group">
+    <label for="ex">Project Name</label>
+    <input type="text" class="form-control" value="{{re['projectname']}}" name="name" id="ex" placeholder="project's name" required>
+  </div>
+  <div class="form-group">
+    <label for="ex1">Technology</label>
+    <input type="text" class="form-control" value="{{re['technology']}}" name="tech" id="ex1" placeholder="technology" required>
+  </div>
+  <div class="form-group">
+  <label for="customRange">Progress</label>
+  <input type="range" min="1" max="100" value="{{re['progress'].rstrip("%")}}" name="prog" class="custom-range" id="customRange" name="points1">
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" value=1 class="custom-control-input" name="comp" id="customCheck" 
+	{%if re['iscomplete']==1%}
+		checked
+	{%endif%}
+	name="example1">
+    <label class="custom-control-label" for="customCheck">Project Completed</label>
+  </div>
+  <br/>
+  <button type="submit" class="btn btn-lg btn-primary">{{what}}</button>		
+</form>
+</div>
+</div>
+<div class="col">
+</div>
+</div>
+{%endblock%}
